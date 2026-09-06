@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krishna's CSE Calculator 🇳🇵</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="calculator">
+
+    <header class="top">
+        <div class="name">KRISHNA'S CSE</div>
+        <div class="sub">SCIENTIFIC CALCULATOR</div>
+    </header>
+
+    <section class="screen-box">
+        <div class="status">
+            <span id="shiftStatus"></span>
+            <span id="alphaStatus"></span>
+            <span id="angleStatus">DEG</span>
+            <span id="matrixStatus"></span>
+        </div>
+
+        <div id="expression" class="expression"></div>
+        <div id="display" class="display">0</div>
+    </section>
+
+    <section class="control-row">
+
+        <button class="red" data-action="shift">SHIFT</button>
+        <button data-action="alpha">ALPHA</button>
+
+        <div class="replay">
+            <button data-action="up">▲</button>
+            <button data-action="left">◀</button>
+            <button class="replay-main">REPLAY</button>
+            <button data-action="right">▶</button>
+            <button data-action="down">▼</button>
+        </div>
+
+        <button data-action="mode">MODE</button>
+        <button data-action="matrix">MATRIX</button>
+
+    </section>
+
+    <div class="yellow-labels">
+        <span>CALC</span>
+        <span>√</span>
+        <span>x²</span>
+        <span>xʸ</span>
+        <span>log</span>
+        <span>ln</span>
+        <span>x!</span>
+    </div>
+
+    <section class="scientific">
+
+        <button data-action="calc">CALC</button>
+        <button data-action="sqrt">√</button>
+        <button data-action="cbrt">∛</button>
+        <button data-action="square">x²</button>
+        <button data-action="cube">x³</button>
+        <button data-action="power">xʸ</button>
+        <button data-action="inverse">x⁻¹</button>
+
+        <button data-action="log">log</button>
+        <button data-action="ln">ln</button>
+        <button data-action="tenPower">10ˣ</button>
+        <button data-action="ePower">eˣ</button>
+        <button data-action="factorial">x!</button>
+        <button data-action="abs">Abs</button>
+        <button data-action="percent">%</button>
+
+        <button data-action="sin">sin</button>
+        <button data-action="cos">cos</button>
+        <button data-action="tan">tan</button>
+        <button data-action="hyp">hyp</button>
+        <button data-action="pi">π</button>
+        <button data-action="constantE">e</button>
+        <button data-action="fraction">a b/c</button>
+
+        <button data-action="asin">sin⁻¹</button>
+        <button data-action="acos">cos⁻¹</button>
+        <button data-action="atan">tan⁻¹</button>
+        <button data-action="rnd">Rnd</button>
+        <button data-action="eng">ENG</button>
+        <button data-action="sd">S↔D</button>
+        <button data-action="exp">×10ˣ</button>
+
+        <button data-action="sto">STO</button>
+        <button data-action="rcl">RCL</button>
+        <button data-action="mplus">M+</button>
+        <button data-action="mminus">M−</button>
+        <button data-action="ans">Ans</button>
+        <button data-action="open">(</button>
+        <button data-action="close">)</button>
+
+    </section>
+
+    <section class="main-keys">
+
+        <button class="number" data-value="7">7</button>
+        <button class="number" data-value="8">8</button>
+        <button class="number" data-value="9">9</button>
+        <button class="danger" data-action="delete">DEL</button>
+        <button class="danger" data-action="clear">AC</button>
+
+        <button class="number" data-value="4">4</button>
+        <button class="number" data-value="5">5</button>
+        <button class="number" data-value="6">6</button>
+        <button data-value="*">×</button>
+        <button data-value="/">÷</button>
+
+        <button class="number" data-value="1">1</button>
+        <button class="number" data-value="2">2</button>
+        <button class="number" data-value="3">3</button>
+        <button data-value="+">+</button>
+        <button data-value="-">−</button>
+
+        <button class="number" data-value="0">0</button>
+        <button class="number" data-value=".">.</button>
+        <button data-action="negate">(−)</button>
+        <button data-action="comma">,</button>
+        <button class="equals" data-action="equals">=</button>
+
+    </section>
+
+    <!-- MATRIX -->
+    <section id="matrixPanel" class="matrix-panel">
+
+        <div class="matrix-heading">
+            MATRIX CALCULATOR 🇳🇵
+        </div>
+
+        <div class="matrix-controls">
+
+            <select id="matrixOperation">
+                <option value="add">A + B</option>
+                <option value="sub">A − B</option>
+                <option value="mul">A × B</option>
+                <option value="detA">det(A)</option>
+                <option value="detB">det(B)</option>
+                <option value="invA">A⁻¹</option>
+                <option value="invB">B⁻¹</option>
+                <option value="transposeA">Transpose A</option>
+                <option value="transposeB">Transpose B</option>
+                <option value="powerA">Aⁿ</option>
+                <option value="scalarA">kA</option>
+            </select>
+
+            <label>
+                Rows
+                <input id="rows" type="number" min="1" max="10" value="2">
+            </label>
+
+            <label>
+                Columns
+                <input id="cols" type="number" min="1" max="10" value="2">
+            </label>
+
+            <button id="createMatrix">CREATE</button>
+
+        </div>
+
+        <div id="matrixInputs"></div>
+
+        <div class="matrix-bottom">
+            <input id="matrixExtra"
+                   type="number"
+                   step="any"
+                   placeholder="k / n">
+
+            <button id="calculateMatrix">
+                CALCULATE
+            </button>
+
+            <button id="closeMatrix">
+                CLOSE
+            </button>
+        </div>
+
+        <pre id="matrixResult"></pre>
+
+    </section>
+
+    <footer>
+        KRISHNA'S CSE CALCULATOR • NEPAL 🇳🇵
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
